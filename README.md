@@ -113,14 +113,14 @@ When appropriate `pip3` should be called instead of `pip` to avoid accidentally 
 An error is expected for a forecast location outside the US. This is an axample:
 
 ```
-./weather.py --lat 0 --lon 0
+./weather.py --lat 89.99999 --lon 0
 *** Error #404. ***
 {
     "correlationId": "1976c6",
     "title": "Data Unavailable For Requested Point",
     "type": "https://api.weather.gov/problems/InvalidPoint",
     "status": 404,
-    "detail": "Unable to provide data for requested point 0,0",
+    "detail": "Unable to provide data for requested point 90,0",
     "instance": "https://api.weather.gov/requests/1976c6"
 }
 ```
