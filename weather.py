@@ -55,8 +55,6 @@ def getUrlWithCache(url, cache_expiration=CACHE_FORECAST_EXPIRATION,
     tim = time.time()
     if not url in cache or cache[url][0] < tim - cache_expiration:
         delay = TOO_MANY_API_CALLS_DELAY
-        headers = { 'User-Agent' : AGENT,
-                    'Accept'     : ACCEPT }
         while True:
             response = requests.get(url, headers=headers)
             if response.status_code == requests.codes.too_many:
