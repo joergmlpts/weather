@@ -66,7 +66,7 @@ def getUrlWithCache(url, cache_expiration=CACHE_FORECAST_EXPIRATION,
         if response.status_code == requests.codes.ok:
             cache[url] = (tim, response.json())
         else:
-            print (f'*** Error #{response.status_code}. ***')
+            print (f"*** Error #{response.status_code} for url '{url}'. ***")
             print (response.text)
             return None
     return cache[url][1]
@@ -151,10 +151,13 @@ if __name__ == '__main__':
     #
     alerts = getUrlWithCache(alertUrl, CACHE_ALERT_EXPIRATION)
     for alert in alerts['features']:
-        printTitle(' '.join(alert['properties']['headline'].split()),
+        properties = alert['properties']
+        printTitle(' '.join(properties['headline'].split()),
                    newLine=False)
-        print(' '.join(alert['properties']['description'].split()))
-        print(' '.join(alert['properties']['instruction'].split()))
+        if 'description' in properties and properties['description'] is not None:
+            print(properties['description'].strip())
+        if 'instruction' in properties and properties['instruction'] is not None:
+            print(properties['instruction'].strip())
         print()
 
     #
@@ -162,6 +165,7 @@ if __name__ == '__main__':
     #
     if not args.hourly:
         forecast = getUrlWithCache(forecastUrl)
+        if forecast is None: sys.exit(1)
         printTitle(f'Forecast for {city}, {state}')
         for dayNight in forecast['properties']['periods']:
             printTitle(dayNight['name'], newLine=False)
@@ -169,6 +173,7 @@ if __name__ == '__main__':
             print()
     else:
         hourlyForecast = getUrlWithCache(hourlyForecastUrl)
+        if hourlyForecast is None: sys.exit(1)
         printTitle(f'Hourly Forecast for {city}, {state}')
         for hour in hourlyForecast['properties']['periods']:
             startTime = hour['startTime']
