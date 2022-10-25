@@ -178,10 +178,11 @@ if __name__ == '__main__':
         for hour in hourlyForecast['properties']['periods']:
             startTime = hour['startTime']
             day = f'{int(startTime[5:7])}/{int(startTime[8:10])}'
-            time = int(startTime[11:13])
-            time = 'midnight' if time == 0 else f'{time} AM' if time < 12 else \
-                   'noon' if time == 12  else f'{time-12} PM'
-            printTitle(f'{day}, {time}', newLine=False)
+            time_int = int(startTime[11:13])
+            time_str = 'midnight' if time_int == 0 else f'{time_int} AM' \
+                       if time_int < 12 else 'noon' if time_int == 12  else \
+                       f'{time_int-12} PM'
+            printTitle(f'{day}, {time_str}', newLine=False)
             print(f"{hour['shortForecast']}, "
                   f"{hour['temperature']}°{hour['temperatureUnit']}, "
                   f"Wind {hour['windSpeed']} {hour['windDirection']}.")
