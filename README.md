@@ -1,9 +1,9 @@
 # weather.py
-This command-line tool obtains weather forecasts for the US from the National Weather Service. Regular and hourly weather forecasts are supported. Alerts are shown if there are any. A forecast location can be specified; it defaults to a location obtained from the IP address.
+This command-line tool retrieves weather forecasts for the US from the National Weather Service. Regular and hourly weather forecasts are supported. Alerts are displayed if there are any. A forecast location can be specified; it defaults to a location obtained from the IP address.
 
 ## Usage
 
-This is a command-line tool. It is usually called without command-line arguments. This is the command for Linux and macOS:
+This is a command-line utility. It is usually called with no command-line arguments. This is the command for Linux and macOS:
 
 ```
 ./weather.py
@@ -15,7 +15,7 @@ On Windows the command is:
 python .\weather.py
 ```
 
-This call results in weather alerts (if there are any) and a forecast:
+This call results in weather alerts (if any) and a forecast:
 ```
 Heat Advisory issued September 12 at 2:10AM PDT until September 12 at 9:00PM PDT by NWS San Diego CA
 ====================================================================================================
@@ -84,7 +84,7 @@ Saturday Night
 ==============
 Mostly clear, with a low around 60.
 ```
-There are several command-line options:
+Several command line options are available:
 
 ```
 usage: weather.py [-h] [--latitude LATITUDE] [--longitude LONGITUDE] [--hourly]
@@ -96,21 +96,21 @@ optional arguments:
                         Longitude for forecast.
   --hourly              Request hourly forecast.
 ```
-Option `--hourly` requests an hour-by-hour forecast for the next 6 days or so. Options `--latitude` and `--longitude` can be used to specify a forecast location.
+The `--hourly` option requests an hourly forecast for the next 6 days or so. The `--latitude` and `--longitude` options can be used to specify a forecast location.
 
 ## Dependencies
 
-This package requires Phyton 3 and only one additional package `requests` is needed. This package can be installed on Debian distributions like Ubuntu with command `sudo apt install python3-requests` and on other platforms with command
+This package requires Phyton 3 and only one additional package `requests` is needed. This package can be installed on Debian distributions like Ubuntu with the command `sudo apt install python3-requests` and on other platforms with the command
 
 ```
 pip install requests
 ```
 
-When appropriate `pip3` should be called instead of `pip` to avoid accidentally installing the package for Python 2.
+If necessary, `pip3` should be called instead of `pip` to avoid accidentally installing the Python 2 package.
 
 ## Errors
 
-An error is expected for a forecast location outside the US. This is an axample:
+An error is expected for a forecast location outside the USA. This is an example:
 
 ```
 ./weather.py --lat 89.99999 --lon 0
