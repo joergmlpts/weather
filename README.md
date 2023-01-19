@@ -1,5 +1,5 @@
 # weather.py
-This command-line tool retrieves weather forecasts for the US from the National Weather Service. Regular and hourly weather forecasts are supported. Alerts are displayed if there are any. A forecast location can be specified; it defaults to a location obtained from the IP address.
+This command-line tool retrieves weather forecasts for the USA from the National Weather Service. Regular and hourly weather forecasts are supported. Alerts are displayed if there are any. A forecast location can be specified; it defaults to a location obtained from the IP address.
 
 ## Usage
 
