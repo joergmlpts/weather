@@ -87,7 +87,9 @@ if __name__ == '__main__':
                 return lat
         except:
             pass
-        raise ValueError('Latitude must be between -90 and 90 degrees.')
+        raise argparse.ArgumentTypeError('Latitude must be between -90 and '
+                                         '90 degrees.')
+
     def longitude(lon):
         try:
             lon = float(lon)
@@ -95,7 +97,8 @@ if __name__ == '__main__':
                 return lon
         except:
             pass
-        raise ValueError('Longitude must be between -180 and 180 degrees.')
+        raise argparse.ArgumentTypeError('Longitude must be between -180 '
+                                         'and 180 degrees.')
 
     # Print a title, an underlined line of text.
     def printTitle(title, newLine=True):
